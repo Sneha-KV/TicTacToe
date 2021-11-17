@@ -50,6 +50,7 @@ const displayWinner = (isDraw) => {
         $winText.innerHTML = `It's a Draw, play again!`
     } else {
         $winText.innerHTML = `Player ${isCircle ? 'O' : 'X'} wins!`;
+        $winSection.classList.add('win');
     }
     $winSection.classList.add('show');
 }
@@ -64,6 +65,7 @@ const handleCellClick = (e) => {
         let xCells = document.querySelectorAll('.cell.x');
         let circleCells = document.querySelectorAll('.cell.circle');
         if(xCells.length + circleCells.length === 9) {
+            // or we can check if the cells have x or circle class
             displayWinner(true);
         } else {
             setBoardState();
@@ -76,6 +78,8 @@ const handleCellClick = (e) => {
 
 const startGame  = () => {
     $winSection.classList.remove('show');
+    $winSection.classList.remove('win');
+    isCircle = false
     $cellElements.forEach( $cell => {
         $cell.classList.remove(X_CLASS);
         $cell.classList.remove(CIRCLE_CLASS);
@@ -86,9 +90,7 @@ const startGame  = () => {
 
 
 $restart.addEventListener('click', () => {
-    
     startGame();
-    
 })
 
 startGame();

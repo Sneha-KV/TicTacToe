@@ -101,10 +101,15 @@ body {
     justify-content: center;
     align-items: center; 
     align-content : center;
+   
 }
 
 .winning-section.show {
     display: flex;
+}
+
+.winning-section.show.win {
+    background-image: url(./assets/confetti_black.gif);
 }
 
 .winner-text {
